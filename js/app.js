@@ -1,7 +1,38 @@
-let usuario = prompt('Por favor, ingrese su nombre').toLowerCase()
+let usuario = prompt('Por favor, ingrese su nombre').toUpperCase()
 alert('Bienvenido/a ' + usuario + ' a El Mundo del Juguete')
 
-let juego = Number((prompt('Indique con el número correspondiente el producto que desea comprar: \n 1- Juego de mesa "LIFE "El juego de la vida"": $4750 \n 2- Juego de mesa "Monopoly": $5390 \n 3- Juego de mesa "Preguntados Realidad Aumentada": $3450 \n 4- Juego de mesa "Juego de la Memoria":$1890 \n 5- Juego de mesa "Jenga Plástico": $1890 \n 6- Juego de mesa "Cuatro en Línea": $1890 \n 7- Juego de mesa "Letras 3D": $1990 \n 8- Juego de mesa "Batalla Naval": $1650 \n 9- Juego de mesa "Crisis: El mundo en juego": $5450')))
+class Juego {
+    constructor(nombre, precio) {
+        this.nombre = nombre
+        this.precio = precio
+    }
+}
+
+const juego1 = new Juego ('Juego de mesa "LIFE: El juego de la vida"', 4750)
+const juego2 = new Juego ('Juego de mesa "Monopoly"', 5390)
+const juego3 = new Juego ('Juego de mesa "Preguntados Realidad Aumentada"', 3450)
+const juego4 = new Juego ('Juego de mesa "Juego de la Memoria"', 1890)
+const juego5 = new Juego ('Juego de mesa "Jenga Plástico"', 1890)
+const juego6 = new Juego ('Juego de mesa "Cuatro en Línea"', 1890)
+const juego7 = new Juego ('Juego de mesa "Letras 3D"', 1990)
+const juego8 = new Juego ('Juego de mesa "Batalla Naval"', 1650)
+const juego9 = new Juego ('Juego de mesa "Crisis: El mundo en juego"', 5450)
+
+const listaJuegos = [juego1, juego2, juego3, juego4, juego5, juego6, juego7, juego8, juego9]
+
+function armarMensaje(array) {
+    let mensaje = 'Indique con el número correspondiente el producto que desea comprar:'
+    let numero = 1
+
+    for( let i = 0; i <= array.length-1; i++) {
+        mensaje += '\n' + numero + '- ' + array[i].nombre + ' $' + array[i].precio;
+        numero++;
+    }
+    return mensaje
+}
+
+let mensajeUsuario = armarMensaje(listaJuegos)
+let numeroJuego = Number((prompt(mensajeUsuario)))
 let juegoSeleccionado
 
 function carrito(producto, precio) {
@@ -9,51 +40,18 @@ function carrito(producto, precio) {
     alert(usuario + ' usted seleccionó: ' + producto + ' a $' + precio)
 }
 
-switch (juego) {
-    case 1:
-        carrito('Juego de mesa "LIFE "El juego de la vida"', 4750)
-        break
+carrito(listaJuegos[numeroJuego-1].nombre, listaJuegos[numeroJuego-1].precio)
 
-    case 2:
-        carrito('Juego de mesa "Monopoly"', 5390)
-        break
-
-    case 3:
-        carrito('Juego de mesa "Preguntados Realidad Aumentada"', 3450)
-        break
-
-    case 4:
-        carrito('Juego de mesa "Juego de la Memoria"', 1890)
-        break
-
-    case 5:
-        carrito('Juego de mesa "Jenga Plástico"', 1890)
-        break
-
-    case 6:
-        carrito('Juego de mesa "Cuatro en Línea"', 1890)
-        break
-
-    case 7:
-        carrito('Juego de mesa "Letras 3D"', 1990)
-        break
-
-    case 8:
-        carrito('Juego de mesa "Batalla Naval"', 1650)
-        break
-
-    case 9:
-        carrito('Juego de mesa "Crisis: El mundo en juego"', 5450)
-        break
-}
-
-compra = prompt('Desea completar su compra de ' + juegoSeleccionado + ' Si/No').toLowerCase()
+const compra = prompt('Desea completar su compra de ' + juegoSeleccionado + ' Si/No').toLowerCase()
 
 if (compra === 'si') {
     alert('Gracias por su compra!')
-}
-
-else {
+} else {
     alert('Gracias por su visita!')
 }
+
+
+
+
+
 
