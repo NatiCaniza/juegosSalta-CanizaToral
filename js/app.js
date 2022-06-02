@@ -11,15 +11,15 @@ class Juego {
 }
 
 //Objetos creados con la funcion constructora
-const juego1 = new Juego ('Juego de mesa "LIFE: El juego de la vida"', 4750)
-const juego2 = new Juego ('Juego de mesa "Monopoly"', 5390)
-const juego3 = new Juego ('Juego de mesa "Preguntados Realidad Aumentada"', 3450)
-const juego4 = new Juego ('Juego de mesa "Juego de la Memoria"', 1890)
-const juego5 = new Juego ('Juego de mesa "Jenga Plástico"', 1890)
-const juego6 = new Juego ('Juego de mesa "Cuatro en Línea"', 1890)
-const juego7 = new Juego ('Juego de mesa "Letras 3D"', 1990)
-const juego8 = new Juego ('Juego de mesa "Batalla Naval"', 1650)
-const juego9 = new Juego ('Juego de mesa "Crisis: El mundo en juego"', 5450)
+const juego1 = new Juego ('LIFE: El juego de la vida', 4750)
+const juego2 = new Juego ('Monopoly', 5390)
+const juego3 = new Juego ('Realidad Aumentada', 3450)
+const juego4 = new Juego ('Juego de la Memoria', 1890)
+const juego5 = new Juego ('Jenga Plástico', 1890)
+const juego6 = new Juego ('Cuatro en Línea', 1890)
+const juego7 = new Juego ('Letras 3D', 1990)
+const juego8 = new Juego ('Batalla Naval', 1650)
+const juego9 = new Juego ('Crisis: El mundo en juego', 5450)
 
 //Array de los objetos utilizados para agregarlos al carrito
 const listaJuegos = [juego1, juego2, juego3, juego4, juego5, juego6, juego7, juego8, juego9]
@@ -82,7 +82,7 @@ while (confirm ('Desea agregar otro juego?')) {
 //Si el usuario no agrega otro juego le muestra solo el juego que selecciono junto con el precio total de la compra y pregunta si quiere comprar o no, dando como respuesta dos mensajes diferentes segun la eleccion que haga el usuario
 if (carrito.length === 1) {
     if (confirm('Desea completar su compra de ' + juegoSeleccionado + '?')) {
-        alert('Total de la compra: $' + sumaCarrito() +
+        alert('Su total es de: $' + sumaCarrito() +
             '\n Gracias por su compra!')
     } else {
         alert('Gracias por su visita!')
