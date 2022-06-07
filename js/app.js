@@ -4,28 +4,45 @@ alert('Bienvenido/a ' + usuario + ' a El Mundo del Juguete')
 
 //Funcion constructora de los objetos Juego
 class Juego {
-    constructor(nombre, precio) {
+    constructor(nombre, precio,imgSrc) {
         this.nombre = nombre
         this.precio = precio
+        this.imgSrc = imgSrc
     }
 }
 
 //Objetos creados con la funcion constructora
-const juego1 = new Juego ('LIFE: El juego de la vida', 4750)
-const juego2 = new Juego ('Monopoly', 5390)
-const juego3 = new Juego ('Realidad Aumentada', 3450)
-const juego4 = new Juego ('Juego de la Memoria', 1890)
-const juego5 = new Juego ('Jenga Plástico', 1890)
-const juego6 = new Juego ('Cuatro en Línea', 1890)
-const juego7 = new Juego ('Letras 3D', 1990)
-const juego8 = new Juego ('Batalla Naval', 1650)
-const juego9 = new Juego ('Crisis: El mundo en juego', 5450)
+const juego1 = new Juego ('LIFE: El juego de la vida', 4750,'img/lifeElJuegoDeLaVida.jpg')
+const juego2 = new Juego ('Monopoly', 5390,'img/monopoly.jpg')
+const juego3 = new Juego ('Preguntados: Realidad Aumentada', 3450,'img/preguntadosRealidadAumentada.jpg')
+const juego4 = new Juego ('El Juego de la Oca', 2500,'img/elJuegoDeLaOca.jpg')
+const juego5 = new Juego ('Carrera de Mente', 4500,'img/carreraDeMente.jpg')
+const juego6 = new Juego ('Cuatro en Línea', 1890,'img/4enLinea.jpg')
+const juego7 = new Juego ('Letras 3D', 1990,'img/letras3d.jpg')
+const juego8 = new Juego ('Batalla Naval', 1650,'img/batallaNaval.jpg')
+const juego9 = new Juego ('TEG Clásico', 5450,'img/tegClasico.jpg')
 
 //Array de los objetos utilizados para agregarlos al carrito
 const listaJuegos = [juego1, juego2, juego3, juego4, juego5, juego6, juego7, juego8, juego9]
 
 //Array donde se agregan el o los juegos que el usuario selecciona
 let carrito = []
+
+const cardContainer = document.getElementById('cardContainer')
+
+listaJuegos.forEach((elemento) => {
+    const card = document.createElement('div')
+    card.className = 'card'
+    card.innerHTML = `
+    <img src="${elemento.imgSrc}" class="card-img-top container-fluid">
+    <h2 class="card-title">${elemento.nombre}</h2>
+    <p class="card-text">$${elemento.precio}</p>
+    <button class="btn btn-primary"> Agregar al Carrito </button>
+    `
+    cardContainer.append(card)
+
+}
+)
 
 //Funcion para armar el mensaje donde el usuario elige el o los juegos que va a comprar
 function armarMensaje(array) {
@@ -95,6 +112,10 @@ if (carrito.length === 1) {
         alert('Gracias por su visita!')
     }
 }  //Si el usuario agrega mas de un juego al carrito, le muestra un listado con los juegos seleccionados junto con el precio total de la compra y pregunta si quiere comprar o no, dando como respuesta dos mensajes diferentes segun la eleccion que haga el usuario
+
+
+
+
 
 
 
