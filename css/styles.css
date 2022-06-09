@@ -1,17 +1,60 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
 body {
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     text-align: center;
-    padding-top: 50px;
+    background-color: white;
+}
+
+.colorBarra {
+    width: 100%;
+    height: 5rem;
+    background-color: #EF476F;
+}
+
+.navbar-light .navbar-brand {
+    font-size: 28px;
+    
+    padding: 1rem;
+    color: #06D6A0;
+}
+
+.navbar-light .navbar-brand:hover {
+    color: white;
+}
+
+.navbar-light .navbar-nav .nav-link{
+    font-size: 22px;
+    margin: 0.5rem;
+    padding: 3rem;
+    color: #06D6A0;
+}
+
+.navbar-light .navbar-nav .nav-link:hover {
+    color: white;
+}
+
+.botonNavbar{
+    background-color: #06D6A0;
+    color: white;
+}
+
+.botonNavbar:hover{
+    background-color: #1B9AAA;
+    color: white;
 }
 
 .titulo{
     font-size: 50px;
-    color: rgb(16, 85, 163);
+    color: #1B9AAA;
 }
 
-.subtitulo{
-    font-size: 35px;
-    color: rgb(72, 72, 146);
+.textoFooter{
+    font-size:20px;
+    color: #EF476F;
 }
 
 .cardContainer {
@@ -22,35 +65,40 @@ body {
 }
 
 .card {
-    width: 20rem;
+    width: 22rem;
     margin-top: 1rem;
     margin-bottom: 2rem;
+    color: #FFC43D;
+    background-color: #1B9AAA;
     padding: 20px 10px;
-    border: 5px solid rgb(16, 85, 163);
+    border: 5px solid;
     border-radius: 20px;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .card-img-top {
-    width: 15rem;
-    height: 15rem;
+    width: 17rem;
+    height: 17rem;
+    margin-left: 1rem;
 }
 
 .card-title {
     font-size: 2rem;
-    color: blue;
+    color: #FFC43D;
 }
 
 .card-text {
     display: block;
     font-size: 1.8rem;
-    color: rgb(72, 72, 146);
+    color: #EF476F;
     margin-bottom: 10px;
 }
 
 .btn-primary {
     margin: 10px 0;
-    background-color: rgb(42, 57, 128);
-    color: rgb(247, 247, 247);
+    background-color: #06D6A0;
+    color: white;
     font-size: 20px;
     font-weight: 500;
     padding: 10px 15px;
@@ -60,20 +108,55 @@ body {
 }
 
 .btn-primary:hover {
-    background-color: rgb(48, 126, 156);
+    background-color: #EF476F;
     box-shadow: 1px 1px 10px lightgrey;
 }
 
-/* Media Queries */
-
-@media(max-width:425px){
-    .card-img-top{
-        width: 20rem;
-        height: 12rem;
-    }
+.buttonClass{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 16px;
+    gap: 20px;
 }
 
-@media (max-width:767px){
-
+.finalizarCompra {
+    background-color: #FFC43D;
+    color: white;
+    border: solid 5px #EF476F;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 3rem;
 }
+
+.finalizarCompra:hover{
+    background-color: #EF476F;
+    border: solid 5px #FFC43D;
+}
+
+footer {
+    width: 100%;
+    height: 18rem;
+    background-color: #06D6A0;
+}
+
+.iconoFooter{
+    width: 10rem;
+    height: 5rem;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+}
+
+.iconosRedesSociales {
+    width: 3rem;
+    height: 3rem;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    padding: 0.2rem;
+    border-radius: 10px;
+    display: inline-block;
+    
+}
+
+
 
