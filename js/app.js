@@ -40,12 +40,31 @@ listaJuegos.forEach((elemento) => {
 
 })
 
+const miCarrito = document.querySelector('#miCarrito')
+
+const imprimirCarrito = () => {
+    miCarrito.innerHTML = ''
+    carrito.forEach((elemento) => {
+        const filaCarrito = document.createElement('div')
+        filaCarrito.className = 'filaCarrito'
+        filaCarrito.innerHTML = `
+        <div class="imagenCarrito">
+        <img src="${elemento.imgSrc}">
+        </div>
+        <div class="tituloJuegoCarrito"><span> Juego ${elemento.nombre}</span></div>
+        <div class="precioJuegoCarrito"><span> $${elemento.precio}</span></div>
+        `
+        miCarrito.append(filaCarrito)
+    })
+}
+
 //Funcion para agregar juegos al carrito
 const agregarJuego = (e) => {
     const juegoElegido = e.target.getAttribute('data-id')
     const elemento = listaJuegos.find((elemento) => elemento.nombre == juegoElegido)
     carrito.push(elemento)
-    console.log(carrito)
+    imprimirCarrito()
+    localStorage.setItem('carrito', JSON.stringify(carrito))
 }
 
 //Botones Agregar al Carrito
@@ -60,15 +79,42 @@ const sumaCarrito = () => {
     carrito.forEach((elemento) => {
         sumaTotal = sumaTotal + elemento.precio
     })
-    alert('Su precio a pagar es de $' + sumaTotal)
-    alert('Gracias por su compra!')
+    alert('Su precio a pagar es de $' + sumaTotal + '. Gracias por su compra!')
+}
+
+if (localStorage.getItem('carrito')) {
+    carrito = JSON.parse(localStorage.getItem('carrito'))
+    imprimirCarrito()
+}
+
+//Funcion para finalizar compra y vaciar el carrito
+const compraryVaciar = () => {
+    sumaCarrito()
+    vaciarCarrito()
 }
 
 //Boton Finalizar Compra
 const finalizarCompra = document.querySelectorAll('.finalizarCompra')
 finalizarCompra.forEach((botonFinalizar) => {
-    botonFinalizar.addEventListener('click', sumaCarrito)
+    botonFinalizar.addEventListener('click', compraryVaciar)
 })
+
+
+//Funciones para vaciar carrito y localStorage
+const vaciarCarrito = () => {
+    if (localStorage.getItem('carrito')) {
+        localStorage.removeItem('carrito')
+    }
+    carrito = []
+    imprimirCarrito()
+}
+
+const botonvaciarCarrito = document.querySelector('.botonvaciarCarrito')
+botonvaciarCarrito.addEventListener('click', vaciarCarrito)
+
+
+
+
 
 
 

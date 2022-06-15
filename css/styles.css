@@ -6,8 +6,9 @@
 body {
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     text-align: center;
-    background-color: white;
 }
+
+/*Barra de navegacion*/
 
 .colorBarra {
     width: 100%;
@@ -47,14 +48,17 @@ body {
     color: white;
 }
 
+/*Main*/
+
+.logo {
+    margin-top: 2rem;
+    margin-bottom: 1.5rem;
+}
+
 .titulo{
     font-size: 50px;
     color: #1B9AAA;
-}
-
-.textoFooter{
-    font-size:20px;
-    color: #EF476F;
+    margin-bottom: 2rem;
 }
 
 .cardContainer {
@@ -81,11 +85,14 @@ body {
     width: 17rem;
     height: 17rem;
     margin-left: 1rem;
+    border: solid 0.5rem #06D6A0;
+    border-radius: 10%;
 }
 
 .card-title {
     font-size: 2rem;
     color: #FFC43D;
+    margin-top: 1rem;
 }
 
 .card-text {
@@ -112,44 +119,129 @@ body {
     box-shadow: 1px 1px 10px lightgrey;
 }
 
-.buttonClass{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 16px;
-    gap: 20px;
+/*Carrito*/
+
+.tituloCarrito{
+    margin-top: 3rem;
+    font-size: 50px;
+    color: #EF476F;
+    background-color: #06D6A0;
+    border: solid 0.5rem  #FFC43D;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
 }
+
+.carritoContainer{
+    font-size: 40px;
+    background-color: #1B9AAA;
+    border: solid 0.5rem #FFC43D;
+    color: #EF476F;
+    justify-content:space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.filaCarrito {
+    border: 8px solid #FFC43D;
+    width: 100%;
+    background-color: #1B9AAA;
+    padding: 20px 0;
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+}
+
+.imagenCarrito img {
+    width: 10rem;
+    height: 10rem;
+    margin-left: 8rem;
+    border: solid 0.5rem #06D6A0;
+    border-radius: 10%;
+}
+
+.tituloJuegoCarrito {
+    width: 35%;
+    margin-left: 4rem;
+    font-size: 2.5rem;
+    color: #FFC43D;;
+    padding: 0;
+}
+
+.precioJuegoCarrito {
+    width: 25%;
+    margin-right: 2.5rem;
+    font-size: 2.5rem;
+    color: #FFC43D;
+}
+
+.footerCarrito{
+    display: flex;
+    justify-content:center;
+    background-color:#1B9AAA;
+    border: 8px solid #FFC43D;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    padding: 2rem;
+} 
 
 .finalizarCompra {
     background-color: #FFC43D;
     color: white;
-    border: solid 5px #EF476F;
+    border: 1px;
     border-radius: 10px;
     padding: 15px;
-    margin-bottom: 3rem;
+    margin-right: 1rem;
 }
 
 .finalizarCompra:hover{
     background-color: #EF476F;
-    border: solid 5px #FFC43D;
+    border: 1px #FFC43D;
 }
+
+.botonvaciarCarrito {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.vaciarCarrito{
+    background-color: #FFC43D;
+    color: white;
+    border: 1px;
+    border-radius: 10px;
+    padding: 15px;
+    
+}
+
+.vaciarCarrito:hover{
+    background-color: #EF476F;
+    border: 1px #FFC43D;;
+}
+
+/*Footer*/
 
 footer {
     width: 100%;
-    height: 18rem;
+    height: 25rem;
     background-color: #06D6A0;
 }
 
+.textoFooter{
+    font-size: 25px;
+    color: #EF476F;
+}
+
 .iconoFooter{
-    width: 10rem;
-    height: 5rem;
-    margin-top: 1rem;
+    width: 12rem;
+    height: 7rem;
+    margin-top: 2rem;
     margin-bottom: 2rem;
 }
 
 .iconosRedesSociales {
-    width: 3rem;
-    height: 3rem;
+    width: 4rem;
+    height: 4rem;
     margin-top: 1rem;
     margin-bottom: 2rem;
     padding: 0.2rem;
@@ -157,6 +249,8 @@ footer {
     display: inline-block;
     
 }
+
+
 
 
 
