@@ -7,6 +7,9 @@ class Juego {
     }
 }
 
+// Desestructuracion de Objeto
+const { nombre, precio, imgSrc } = Juego
+
 //Objetos creados con la funcion constructora
 const juego1 = new Juego('El juego de la vida', 4750, 'img/lifeElJuegoDeLaVida.jpg')
 const juego2 = new Juego('Monopoly Clásico', 5390, 'img/monopoly.jpg')
@@ -82,10 +85,8 @@ const sumaCarrito = () => {
     alert('Su precio a pagar es de $' + sumaTotal + '. Gracias por su compra!')
 }
 
-if (localStorage.getItem('carrito')) {
-    carrito = JSON.parse(localStorage.getItem('carrito'))
-    imprimirCarrito()
-}
+//Optimizacion con operador OR
+let carritoLocalStorage = JSON.parse(localStorage.getItem('carrito')) || []
 
 //Funcion para finalizar compra y vaciar el carrito
 const compraryVaciar = () => {
