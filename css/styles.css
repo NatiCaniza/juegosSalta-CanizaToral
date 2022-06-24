@@ -119,6 +119,10 @@ body {
     box-shadow: 1px 1px 10px lightgrey;
 }
 
+.toastify {
+    background: linear-gradient(to right, #EF476F, #1B9AAA, #06D6A0, #FFC43D)
+}
+
 /*Carrito*/
 
 .tituloCarrito{
@@ -216,8 +220,14 @@ body {
 
 .vaciarCarrito:hover{
     background-color: #EF476F;
-    border: 1px #FFC43D;;
+    border: 1px #FFC43D;
 }
+
+.swal2-popup {
+    color:white !important;
+    background-color: #EF476F !important;
+}
+
 
 /*Footer*/
 

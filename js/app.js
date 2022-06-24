@@ -73,8 +73,19 @@ const agregarJuego = (e) => {
 //Botones Agregar al Carrito
 const botonesCompra = document.querySelectorAll('.btn-primary')
 botonesCompra.forEach((botonCompra) => {
-    botonCompra.addEventListener('click',agregarJuego)
+    botonCompra.addEventListener('click', agregarJuego)
 })
+
+const notificacionesCarrito = document.querySelectorAll('.btn-primary')
+notificacionesCarrito.forEach((notificacionCarrito) =>{
+    notificacionCarrito.addEventListener('click',() => {
+        Toastify({
+            text: "Juego agregado al carrito",
+            duration: 3000,
+        }).showToast();
+    })
+})
+
 
 // Funcion para calcular costo total del o los juegos seleccionados
 const sumaCarrito = () => {
@@ -82,7 +93,6 @@ const sumaCarrito = () => {
     carrito.forEach((elemento) => {
         sumaTotal = sumaTotal + elemento.precio
     })
-    alert('Su precio a pagar es de $' + sumaTotal + '. Gracias por su compra!')
 }
 
 //Optimizacion con operador OR
@@ -100,6 +110,17 @@ finalizarCompra.forEach((botonFinalizar) => {
     botonFinalizar.addEventListener('click', compraryVaciar)
 })
 
+document.querySelector('.finalizarCompra').addEventListener('click', () => {
+    Swal.fire({
+        title: 'Gracias por su compra!',
+        showClass: {
+            popup: 'animate__animated animate__fadeInDown'
+        },
+        hideClass: {
+            popup: 'animate__animated animate__fadeOutUp'
+        }
+    })
+})
 
 //Funciones para vaciar carrito y localStorage
 const vaciarCarrito = () => {
@@ -112,23 +133,3 @@ const vaciarCarrito = () => {
 
 const botonvaciarCarrito = document.querySelector('.botonvaciarCarrito')
 botonvaciarCarrito.addEventListener('click', vaciarCarrito)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
