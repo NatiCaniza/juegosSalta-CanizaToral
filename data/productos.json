@@ -1,0 +1,57 @@
+{
+    "data": [
+        {
+            "nombre": "El juego de la vida", 
+            "precio": 4750, 
+            "imgSrc": "img/lifeElJuegoDeLaVida.jpg"
+        },
+        
+        {
+            "nombre": "Monopoly Clásico", 
+            "precio": 5390, 
+            "imgSrc": "img/monopoly.jpg"
+        },
+        
+        {
+            "nombre": "Preguntados", 
+            "precio": 3450, 
+            "imgSrc": "img/preguntadosRealidadAumentada.jpg"
+        },
+
+        {
+            "nombre": "El Juego de la Oca", 
+            "precio": 2500, 
+            "imgSrc": "img/elJuegoDeLaOca.jpg"
+        },
+
+        {
+            "nombre": "Carrera de Mente", 
+            "precio": 4500, 
+            "imgSrc": "img/carreraDeMente.jpg"
+        },
+        
+        {
+            "nombre": "Cuatro en Línea", 
+            "precio": 1890, 
+            "imgSrc": "img/4enLinea.jpg"
+        },
+
+        {
+            "nombre": "Letras 3D", 
+            "precio": 1990, 
+            "imgSrc": "img/letras3d.jpg"
+        },
+
+        {
+            "nombre": "Batalla Naval", 
+            "precio": 1650, 
+            "imgSrc": "img/batallaNaval.jpg"
+        },
+
+        {
+            "nombre": "TEG Clásico", 
+            "precio": 5450, 
+            "imgSrc": "img/tegClasico.jpg"
+        }
+]
+}

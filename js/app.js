@@ -1,47 +1,40 @@
-//Funcion constructora de los objetos Juego
-class Juego {
-    constructor(nombre, precio, imgSrc) {
-        this.nombre = nombre
-        this.precio = precio
-        this.imgSrc = imgSrc
-    }
-}
-
-// Desestructuracion de Objeto
-const { nombre, precio, imgSrc } = Juego
-
-//Objetos creados con la funcion constructora
-const juego1 = new Juego('El juego de la vida', 4750, 'img/lifeElJuegoDeLaVida.jpg')
-const juego2 = new Juego('Monopoly Clásico', 5390, 'img/monopoly.jpg')
-const juego3 = new Juego('Preguntados', 3450, 'img/preguntadosRealidadAumentada.jpg')
-const juego4 = new Juego('El Juego de la Oca', 2500, 'img/elJuegoDeLaOca.jpg')
-const juego5 = new Juego('Carrera de Mente', 4500, 'img/carreraDeMente.jpg')
-const juego6 = new Juego('Cuatro en Línea', 1890, 'img/4enLinea.jpg')
-const juego7 = new Juego('Letras 3D', 1990, 'img/letras3d.jpg')
-const juego8 = new Juego('Batalla Naval', 1650, 'img/batallaNaval.jpg')
-const juego9 = new Juego('TEG Clásico', 5450, 'img/tegClasico.jpg')
-
 //Array de los objetos utilizados para agregarlos al carrito
-const listaJuegos = [juego1, juego2, juego3, juego4, juego5, juego6, juego7, juego8, juego9]
+let listaJuegos
 
 //Array donde se agregan el o los juegos que el usuario selecciona
 let carrito = []
 
+let totalDeCompra = 0
+
 //DOM
 const cardContainer = document.querySelector('#cardContainer')
 
-listaJuegos.forEach((elemento) => {
-    const card = document.createElement('div')
-    card.className = 'card'
-    card.innerHTML = `
-    <img src="${elemento.imgSrc}" class="card-img-top">
-    <h2 class="card-title">${elemento.nombre}</h2>
-    <p class="card-text">$${elemento.precio}</p>
-    <button data-id="${elemento.nombre}"class="btn btn-primary"> Agregar al Carrito </button>
-    `
-    cardContainer.append(card)
+const renderizarJuegos = (listaJuegos) => {
+    cardContainer.innerHTML= ''
+    listaJuegos.forEach((elemento) => {
+        const card = document.createElement('div')
+        card.className = 'card'
+        card.innerHTML = `
+        <img src="${elemento.imgSrc}" class="card-img-top">
+        <h2 class="card-title">${elemento.nombre}</h2>
+        <p class="card-text">$${elemento.precio}</p>
+        <button data-id="${elemento.nombre}"class="btn btn-primary"> Agregar al Carrito </button>
+        `
+        cardContainer.append(card)
+    })
 
+    //Boton Agregar al Carrito que tambien genera una notificacion
+    const botonesCompra = document.querySelectorAll('.btn-primary')
+    botonesCompra.forEach((botonCompra) => {
+    botonCompra.addEventListener('click', agregarJuego)
+    botonCompra.addEventListener('click',() => {
+        Toastify({
+            text: "Juego agregado al carrito",
+            duration: 3000,
+        }).showToast();
+    })
 })
+}
 
 const miCarrito = document.querySelector('#miCarrito')
 
@@ -61,7 +54,8 @@ const imprimirCarrito = () => {
     })
 }
 
-//Funcion para agregar juegos al carrito
+// Funcion para agregar juegos al carrito
+
 const agregarJuego = (e) => {
     const juegoElegido = e.target.getAttribute('data-id')
     const elemento = listaJuegos.find((elemento) => elemento.nombre == juegoElegido)
@@ -70,29 +64,13 @@ const agregarJuego = (e) => {
     localStorage.setItem('carrito', JSON.stringify(carrito))
 }
 
-//Botones Agregar al Carrito
-const botonesCompra = document.querySelectorAll('.btn-primary')
-botonesCompra.forEach((botonCompra) => {
-    botonCompra.addEventListener('click', agregarJuego)
-})
-
-const notificacionesCarrito = document.querySelectorAll('.btn-primary')
-notificacionesCarrito.forEach((notificacionCarrito) =>{
-    notificacionCarrito.addEventListener('click',() => {
-        Toastify({
-            text: "Juego agregado al carrito",
-            duration: 3000,
-        }).showToast();
-    })
-})
-
-
 // Funcion para calcular costo total del o los juegos seleccionados
 const sumaCarrito = () => {
     let sumaTotal = 0
     carrito.forEach((elemento) => {
         sumaTotal = sumaTotal + elemento.precio
     })
+    return sumaTotal
 }
 
 //Optimizacion con operador OR
@@ -100,7 +78,7 @@ let carritoLocalStorage = JSON.parse(localStorage.getItem('carrito')) || []
 
 //Funcion para finalizar compra y vaciar el carrito
 const compraryVaciar = () => {
-    sumaCarrito()
+    totalDeCompra = sumaCarrito()
     vaciarCarrito()
 }
 
@@ -113,6 +91,7 @@ finalizarCompra.forEach((botonFinalizar) => {
 document.querySelector('.finalizarCompra').addEventListener('click', () => {
     Swal.fire({
         title: 'Gracias por su compra!',
+        text:'El precio total de la compra es de $' + totalDeCompra,
         showClass: {
             popup: 'animate__animated animate__fadeInDown'
         },
@@ -131,5 +110,38 @@ const vaciarCarrito = () => {
     imprimirCarrito()
 }
 
+//Funcion que genera una alerta cuando se quiere borrar el carrito
 const botonvaciarCarrito = document.querySelector('.botonvaciarCarrito')
-botonvaciarCarrito.addEventListener('click', vaciarCarrito)
+botonvaciarCarrito.addEventListener('click', () => {
+    Swal.fire({
+        title: 'Estás seguro que quieres borrar el carrito?',
+        text: "No podrás revertir esto!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#06D6A0',
+        cancelButtonColor: '#FFC43D',
+        confirmButtonText: 'Si, borrar!'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            vaciarCarrito()
+            Swal.fire(
+                'Listo!',
+                'Los productos fueron borrados con éxito',
+                'success'
+            )
+        }
+    })
+})
+
+// Traemos los productos desde JSON
+const cargarListaJuego = async () => {
+    const res = await fetch('../data/productos.json')
+    const json = await res.json()
+    listaJuegos = json.data
+    renderizarJuegos(listaJuegos)
+    
+}
+
+cargarListaJuego()
+
+
