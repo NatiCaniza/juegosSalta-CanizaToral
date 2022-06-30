@@ -135,7 +135,7 @@ botonvaciarCarrito.addEventListener('click', () => {
 
 // Traemos los productos desde JSON
 const cargarListaJuego = async () => {
-    const res = await fetch('../data/productos.json')
+    const res = await fetch('./data/productos.json')
     const json = await res.json()
     listaJuegos = json.data
     renderizarJuegos(listaJuegos)
