@@ -1,17 +1,34 @@
+// ------- DECLARACIONES -------
 //Array de los objetos utilizados para agregarlos al carrito
 let listaJuegos
 
 //Array donde se agregan el o los juegos que el usuario selecciona
 let carrito = []
-
+//Array que utilizo en la funcion para finalizar compra y vaciar el carrito
 let totalDeCompra = 0
 
-//DOM
+//Optimizacion con operador OR
+let carritoLocalStorage = JSON.parse(localStorage.getItem('carrito')) || []
+
+// ------- QUERY ELEMENTOS -------
+//Barra de busqueda
+const barraBusqueda = document.querySelector('#barraBusqueda')
+const botonBusqueda = document.querySelector('#botonBusqueda')
+
+//Card container
 const cardContainer = document.querySelector('#cardContainer')
 
-const renderizarJuegos = (listaJuegos) => {
-    cardContainer.innerHTML= ''
-    listaJuegos.forEach((elemento) => {
+//Carrito
+const miCarrito = document.querySelector('#miCarrito')
+
+//Input y boton para suscribirse
+const barraMail = document.querySelector('#barraMail')
+const botonMail = document.querySelector('#botonMail')
+
+// ------- FUNCIONES -------
+const renderizarJuegos = (array) => {
+    cardContainer.innerHTML = ''
+    array.forEach((elemento) => {
         const card = document.createElement('div')
         card.className = 'card'
         card.innerHTML = `
@@ -23,11 +40,11 @@ const renderizarJuegos = (listaJuegos) => {
         cardContainer.append(card)
     })
 
-    //Boton Agregar al Carrito que tambien genera una notificacion
-    const botonesCompra = document.querySelectorAll('.btn-primary')
-    botonesCompra.forEach((botonCompra) => {
+//Boton Agregar al Carrito que tambien genera una notificacion
+const botonesCompra = document.querySelectorAll('.btn-primary')
+botonesCompra.forEach((botonCompra) => {
     botonCompra.addEventListener('click', agregarJuego)
-    botonCompra.addEventListener('click',() => {
+    botonCompra.addEventListener('click', () => {
         Toastify({
             text: "Juego agregado al carrito",
             duration: 3000,
@@ -36,8 +53,7 @@ const renderizarJuegos = (listaJuegos) => {
 })
 }
 
-const miCarrito = document.querySelector('#miCarrito')
-
+// Funcion para imprimir el carrito carrito
 const imprimirCarrito = () => {
     miCarrito.innerHTML = ''
     carrito.forEach((elemento) => {
@@ -55,10 +71,10 @@ const imprimirCarrito = () => {
 }
 
 // Funcion para agregar juegos al carrito
-
+const buscarJuegosEnArrayPorId = (nombreJuegoSeleccionado) => listaJuegos.find((elemento) => elemento.nombre == nombreJuegoSeleccionado)
 const agregarJuego = (e) => {
     const juegoElegido = e.target.getAttribute('data-id')
-    const elemento = listaJuegos.find((elemento) => elemento.nombre == juegoElegido)
+    const elemento = buscarJuegosEnArrayPorId(juegoElegido)
     carrito.push(elemento)
     imprimirCarrito()
     localStorage.setItem('carrito', JSON.stringify(carrito))
@@ -72,9 +88,6 @@ const sumaCarrito = () => {
     })
     return sumaTotal
 }
-
-//Optimizacion con operador OR
-let carritoLocalStorage = JSON.parse(localStorage.getItem('carrito')) || []
 
 //Funcion para finalizar compra y vaciar el carrito
 const compraryVaciar = () => {
@@ -91,7 +104,7 @@ finalizarCompra.forEach((botonFinalizar) => {
 document.querySelector('.finalizarCompra').addEventListener('click', () => {
     Swal.fire({
         title: 'Gracias por su compra!',
-        text:'El precio total de la compra es de $' + totalDeCompra,
+        text: 'El precio total de la compra es de $' + totalDeCompra,
         showClass: {
             popup: 'animate__animated animate__fadeInDown'
         },
@@ -133,15 +146,52 @@ botonvaciarCarrito.addEventListener('click', () => {
     })
 })
 
+//Funcion que envia un mail con la direcciom de email que el usuario ingrese en el input
+const enviarMail = () => {
+    Email.send({
+        Host : "smtp.elasticemail.com",
+        Port: '2525',
+        Username : "horadejugar.nct@gmail.com",
+        Password : "A4BD5F7ED99B097024E1BBA365CCB101F456",
+        To : "horadejugar.nct@gmail.com",
+        From : document.getElementById('barraMail').value,
+        Subject : "Nuevo Mail de Contacto",
+        Body : "Mail: " + document.getElementById('barraMail').value,
+    })
+}
+
+//Funcion que muestra una notificacion al hacer click en el boton Enviar
+const botonEnviar = document.querySelector('#botonMail')
+botonMail.addEventListener('click' , () => {
+    Toastify({
+        text: "Mail registrado con éxito!",
+        duration: 3000,
+    }).showToast();
+    enviarMail();
+})
+
+// Barra y boton de busqueda
+const busquedaJuegos = () => {
+    const busquedaQuery = barraBusqueda.value.toLowerCase()
+    const busquedaResultado = listaJuegos.filter((elemento) => elemento.nombre.toLowerCase().includes(busquedaQuery))
+    renderizarJuegos(busquedaResultado)
+}
+
 // Traemos los productos desde JSON
 const cargarListaJuego = async () => {
     const res = await fetch('./data/productos.json')
     const json = await res.json()
     listaJuegos = json.data
     renderizarJuegos(listaJuegos)
-    
+
 }
 
-cargarListaJuego()
+// ------- EVENT LISTENERS -------
+// Barra de Busqueda
+botonBusqueda.addEventListener('click', busquedaJuegos)
+barraBusqueda.addEventListener('input', busquedaJuegos)
+
+// ------- Traemos los Pokemon desde JSON -------
+cargarListaJuego(listaJuegos)
 
 

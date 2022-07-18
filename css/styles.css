@@ -8,57 +8,47 @@ body {
     text-align: center;
 }
 
-/*Barra de navegacion*/
-
-.colorBarra {
-    width: 100%;
-    height: 5rem;
-    background-color: #EF476F;
-}
-
-.navbar-light .navbar-brand {
-    font-size: 28px;
-    
-    padding: 1rem;
-    color: #06D6A0;
-}
-
-.navbar-light .navbar-brand:hover {
-    color: white;
-}
-
-.navbar-light .navbar-nav .nav-link{
-    font-size: 22px;
-    margin: 0.5rem;
-    padding: 3rem;
-    color: #06D6A0;
-}
-
-.navbar-light .navbar-nav .nav-link:hover {
-    color: white;
-}
-
-.botonNavbar{
+/*Barra de busqueda*/
+.buscarJuegos{
+    width: 75%;
+    margin: 2rem auto;
     background-color: #06D6A0;
-    color: white;
+    border: solid 0.5rem #7b2cbf;
+    padding: 1.5rem;
+    
 }
 
-.botonNavbar:hover{
+.botonBusqueda{
+    background-color: #EF476F;
+    color: white;
+    margin: 0.5rem 0.5rem;
+    font-size: 20px;
+    padding: 0.5rem 0.5rem;
+    border: none;
+    border-radius: 10px;
+}
+
+.botonBusqueda:hover{
     background-color: #1B9AAA;
     color: white;
+}
+
+.barraBusqueda{
+    width: 18rem;
+    border: solid 5px #EF476F;
 }
 
 /*Main*/
 
 .logo {
-    margin-top: 2rem;
-    margin-bottom: 1.5rem;
+    margin: 2rem auto;
+    max-width: 50%;
 }
 
 .titulo{
-    font-size: 50px;
+    font-size: 250%;
     color: #1B9AAA;
-    margin-bottom: 2rem;
+    text-align: center;
 }
 
 .cardContainer {
@@ -72,10 +62,9 @@ body {
     width: 22rem;
     margin-top: 1rem;
     margin-bottom: 2rem;
-    color: #FFC43D;
     background-color: #1B9AAA;
     padding: 20px 10px;
-    border: 5px solid;
+    border: 5px solid #7b2cbf;
     border-radius: 20px;
     display: flex;
     flex-wrap: wrap;
@@ -91,7 +80,7 @@ body {
 
 .card-title {
     font-size: 2rem;
-    color: #FFC43D;
+    color: white;
     margin-top: 1rem;
 }
 
@@ -107,7 +96,6 @@ body {
     background-color: #06D6A0;
     color: white;
     font-size: 20px;
-    font-weight: 500;
     padding: 10px 15px;
     border: none;
     border-radius: 10px;
@@ -120,25 +108,28 @@ body {
 }
 
 .toastify {
-    background: linear-gradient(to right, #EF476F, #1B9AAA, #06D6A0, #FFC43D)
+    background: linear-gradient(to right, #EF476F,#7b2cbf, #1B9AAA, #06D6A0)
 }
 
 /*Carrito*/
 
 .tituloCarrito{
-    margin-top: 3rem;
+    width: 70%;
+    margin: 2rem auto;
     font-size: 50px;
     color: #EF476F;
     background-color: #06D6A0;
-    border: solid 0.5rem  #FFC43D;
+    border: solid 0.5rem #7b2cbf;
     padding: 1.5rem;
     margin-bottom: 2rem;
 }
 
 .carritoContainer{
+    width: 90%;
+    margin: 2rem auto;
     font-size: 40px;
     background-color: #1B9AAA;
-    border: solid 0.5rem #FFC43D;
+    border: solid 0.5rem #7b2cbf;
     color: #EF476F;
     justify-content:space-between;
     align-items: center;
@@ -146,7 +137,9 @@ body {
 }
 
 .filaCarrito {
-    border: 8px solid #FFC43D;
+    width: 70%;
+    margin: 2rem auto;
+    border: 8px solid #7b2cbf;
     width: 100%;
     background-color: #1B9AAA;
     padding: 20px 0;
@@ -156,40 +149,42 @@ body {
 }
 
 .imagenCarrito img {
-    width: 10rem;
-    height: 10rem;
-    margin-left: 8rem;
+    width: 8rem;
+    height: 8rem;
+    margin: 1rem 0.5rem;
     border: solid 0.5rem #06D6A0;
     border-radius: 10%;
 }
 
 .tituloJuegoCarrito {
-    width: 35%;
-    margin-left: 4rem;
-    font-size: 2.5rem;
-    color: #FFC43D;;
+    width: 20%;
+    margin: 1rem auto;
+    font-size: 150%;
+    color:white;
     padding: 0;
 }
 
 .precioJuegoCarrito {
-    width: 25%;
-    margin-right: 2.5rem;
-    font-size: 2.5rem;
-    color: #FFC43D;
+    width: 10%;
+    margin: 1rem auto;;
+    font-size: 150%;
+    color:white;
 }
 
 .footerCarrito{
+    width: 70%;
+    margin: 2rem auto;
     display: flex;
     justify-content:center;
     background-color:#1B9AAA;
-    border: 8px solid #FFC43D;
+    border: 8px solid #7b2cbf;
     margin-top: 1rem;
     margin-bottom: 2rem;
     padding: 2rem;
 } 
 
 .finalizarCompra {
-    background-color: #FFC43D;
+    background-color:#7b2cbf;
     color: white;
     border: 1px;
     border-radius: 10px;
@@ -199,7 +194,7 @@ body {
 
 .finalizarCompra:hover{
     background-color: #EF476F;
-    border: 1px #FFC43D;
+    border: 1px #7b2cbf;
 }
 
 .botonvaciarCarrito {
@@ -210,7 +205,7 @@ body {
 }
 
 .vaciarCarrito{
-    background-color: #FFC43D;
+    background-color: #7b2cbf;
     color: white;
     border: 1px;
     border-radius: 10px;
@@ -220,14 +215,13 @@ body {
 
 .vaciarCarrito:hover{
     background-color: #EF476F;
-    border: 1px #FFC43D;
+    border: 1px #7b2cbf;
 }
 
 .swal2-popup {
-    color:white !important;
-    background-color: #EF476F !important;
+    color:#06D6A0 !important;
+    background-color:white !important;
 }
-
 
 /*Footer*/
 
@@ -258,6 +252,31 @@ footer {
     border-radius: 10px;
     display: inline-block;
     
+}
+
+/*Media Queries*/
+@media (max-width:425px) {
+    .logo{
+        max-width: 70%;
+    }
+
+    .titulo{
+        font-size: 200%;
+    }
+
+    .tituloCarrito{
+        font-size: 250%;
+    }
+
+    .col{
+        font-size: 70%;
+    }
+}
+
+@media (max-width:767px){
+    footer{
+        height: 30rem;
+    }
 }
 
 
